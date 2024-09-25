@@ -83,12 +83,12 @@ public:
 
 		// pass in rotation matrix
 		GLuint rotateUniform = glGetUniformLocation(prog, "rot");
-		std::array<GLfloat, 4> rot = *_rotation;
-		glUniformMatrix2fv(rotateUniform, 1, false, rot.data());
+		std::array<GLfloat, 4> rot = *static_cast<decltype(ROTATIONS)::const_iterator>(_rotation);
+		glUniformMatrix2fv(rotateUniform, 1, GL_FALSE, rot.data());
 
 		// pass in transform vector
 		GLuint transformUniform = glGetUniformLocation(prog, "tform");
-		std::pair<GLfloat, GLfloat> tform = *_shake;
+		std::pair<GLfloat, GLfloat> tform = *static_cast<decltype(_shakePos)::const_iterator>(_shake);
 		glUniform2f(transformUniform, tform.first, tform.second);
 
 		// Draw
