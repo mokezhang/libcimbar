@@ -92,6 +92,6 @@ TEST_CASE( "zstd_decompressorTest/testDecompress.ToFile", "[unit]" )
 		assertEquals( 30, dec.decompress(ss) );
 	}
 
-	string actual = File(tempdir.path() / "decompress.txt").read_all();
+	string actual = File((tempdir.path() / "decompress.txt").string()).read_all();
 	assertEquals( expectedOutput.str(), actual );
 }
