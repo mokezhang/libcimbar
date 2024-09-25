@@ -196,7 +196,7 @@ std::vector<Anchor> Scanner::scan()
 	std::vector<Anchor> candidates;
 	unsigned cutoff = scan_primary(candidates);
 
-	if (candidates.size() == 3 and cutoff != 0)
+	if (candidates.size() == 3 && cutoff != 0)
 		add_bottom_right_corner(candidates, cutoff);
 	return candidates;
 }
@@ -235,11 +235,11 @@ point<int> Scanner::find_edge(const point<int>& u, const point<int>& v, point<do
 
 		EdgeScanState state;
 		double i = 0, j = 0;
-		while (abs(i) <= abs(check.x()) and abs(j) <= abs(check.y()))
+		while (abs(i) <= abs(check.x()) && abs(j) <= abs(check.y()))
 		{
 			double x = mid.x() + i;
 			double y = mid.y() + j;
-			if (x < 0 or x >= _img.cols or y < 0 or y >= _img.rows)
+			if (x < 0 || x >= _img.cols || y < 0 || y >= _img.rows)
 			{
 				i += unit.x();
 				j += unit.y();

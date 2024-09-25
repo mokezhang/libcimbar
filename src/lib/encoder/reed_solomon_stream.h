@@ -21,7 +21,7 @@ public:
 
 	bool good() const
 	{
-		return _good and _stream.good();
+		return _good && _stream.good();
 	}
 
 	long tellp() const

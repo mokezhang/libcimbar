@@ -96,12 +96,12 @@ CimbReader::CimbReader(const cv::Mat& img, CimbDecoder& decoder, unsigned color_
 	, _cellSize(Config::cell_size() + 2)
 	, _positions(Config::cell_spacing(), Config::cells_per_col(), Config::cell_offset(), Config::corner_padding())
 	, _decoder(decoder)
-	, _good(_image.cols >= Config::image_size() and _image.rows >= Config::image_size())
+	, _good(_image.cols >= Config::image_size() && _image.rows >= Config::image_size())
 	, _colorCorrection(color_correction)
 	, _colorMode(color_mode)
 {
 	_grayscale = preprocessSymbolGrid(img, needs_sharpen);
-	if (_good and color_correction == 1)
+	if (_good && color_correction == 1)
 		simpleColorCorrection(_image, decoder);
 }
 
@@ -143,7 +143,7 @@ unsigned CimbReader::read(PositionData& pos)
 
 bool CimbReader::done() const
 {
-	return !_good or _positions.done();
+	return !_good || _positions.done();
 }
 
 void CimbReader::init_ccm(unsigned color_bits, unsigned interleave_blocks, unsigned interleave_partitions, unsigned fountain_blocks)
@@ -245,7 +245,7 @@ void CimbReader::init_ccm(unsigned color_bits, unsigned interleave_blocks, unsig
 
 void CimbReader::update_metadata(char* buff, unsigned len)
 {
-	if (len == 0 and _fountainColorHeader.id() == 0)
+	if (len == 0 && _fountainColorHeader.id() == 0)
 		return;
 
 	if (_fountainColorHeader.id() == 0)

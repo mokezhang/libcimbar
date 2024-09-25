@@ -54,7 +54,7 @@ int main(int argc, char** argv)
 	;
 
 	auto result = options.parse(argc, argv);
-	if (result.count("help") or !result.count("bitmap"))
+	if (result.count("help") || !result.count("bitmap"))
 	{
 	  std::cout << options.help() << std::endl;
 	  exit(0);

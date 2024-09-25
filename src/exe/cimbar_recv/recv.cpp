@@ -52,7 +52,7 @@ int main(int argc, char** argv)
 	options.positional_help("<in> <out>");
 
 	auto result = options.parse(argc, argv);
-	if (result.count("help") or !result.count("in") or !result.count("out"))
+	if (result.count("help") || !result.count("in") || !result.count("out"))
 	{
 	  std::cout << options.help() << std::endl;
 	  return 0;
@@ -68,7 +68,7 @@ int main(int argc, char** argv)
 	if (result.count("mode"))
 	{
 		string mode = result["mode"].as<string>();
-		legacy_mode = (mode == "4c") or (mode == "4C");
+		legacy_mode = (mode == "4c") || (mode == "4C");
 	}
 	unsigned color_mode = legacy_mode? 0 : 1;
 

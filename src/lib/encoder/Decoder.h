@@ -209,7 +209,7 @@ inline bool Decoder::load_ccm(std::string filename)
 
 inline bool Decoder::save_ccm(std::string filename)
 {
-	if (not _decoder.get_ccm().active())
+	if (! _decoder.get_ccm().active())
 		return false;
 
 	cv::Mat temp(_decoder.get_ccm().mat());

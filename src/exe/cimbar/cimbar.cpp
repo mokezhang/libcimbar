@@ -63,7 +63,7 @@ namespace {
 
 		bool operator==(const stdinerator& rhs) const
 		{
-			return _done and rhs._done;
+			return _done && rhs._done;
 		}
 
 		bool operator!=(const stdinerator& rhs) const
@@ -148,7 +148,7 @@ int decode(const FilenameIterable& infiles, const std::function<int(cv::UMat, un
 				err |= 2;
 				continue;
 			}
-			else if (preprocess != 0 and res == Extractor::NEEDS_SHARPEN)
+			else if (preprocess != 0 && res == Extractor::NEEDS_SHARPEN)
 				shouldPreprocess = true;
 		}
 
@@ -226,7 +226,7 @@ int main(int argc, char** argv)
 	if (result.count("mode"))
 	{
 		string mode = result["mode"].as<string>();
-		legacy_mode = (mode == "4c") or (mode == "4C");
+		legacy_mode = (mode == "4c") || (mode == "4C");
 	}
 
 	if (encodeFlag)
@@ -251,7 +251,7 @@ int main(int argc, char** argv)
 
 	if (no_fountain)
 	{
-		if (not color_correction_file.empty())
+		if (!color_correction_file.empty())
 			d.load_ccm(color_correction_file);
 
 		// simpler encoding, just the basics + ECC. No compression, fountain codes, etc.
@@ -283,7 +283,7 @@ int main(int argc, char** argv)
 		else
 			res = decode(infiles, fountain_decode_fun(sink, d), no_deskew, undistort, color_mode, preprocess, color_correct);
 	}
-	if (not color_correction_file.empty())
+	if (!color_correction_file.empty())
 		d.save_ccm(color_correction_file);
 
 	return res;

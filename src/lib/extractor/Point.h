@@ -34,7 +34,7 @@ public:
 
 	bool operator==(const point& rhs) const
 	{
-		return this->first == rhs.first and this->second == rhs.second;
+		return this->first == rhs.first && this->second == rhs.second;
 	}
 
 	point operator+(const point& rhs) const

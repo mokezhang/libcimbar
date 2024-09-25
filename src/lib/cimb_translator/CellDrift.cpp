@@ -37,7 +37,7 @@ uint8_t CellDrift::calculate_cooldown(uint8_t previous, uint8_t idx)
 		return 4;
 	if (idx % 2 == 0)
 		return 0xFF;
-	if ((previous xor idx) == 6) // 1 and 7, 3 and 5
+	if ((previous ^ idx) == 6) // 1 and 7, 3 and 5
 		return 0xFF;
 	return idx;
 }

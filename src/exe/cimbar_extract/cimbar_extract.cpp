@@ -21,7 +21,7 @@ int main(int argc, char** argv)
 	options.positional_help("<in> <out>");
 
 	auto result = options.parse(argc, argv);
-	if (result.count("help") or !result.count("out") or !result.count("in"))
+	if (result.count("help") || !result.count("out") || !result.count("in"))
 	{
 	  std::cout << options.help() << std::endl;
 	  exit(0);

@@ -85,11 +85,11 @@ public:
 
 	bool is_mergeable(const Anchor& rhs, int max_distance) const
 	{
-		if (::abs(xavg() - rhs.xavg()) > max_distance or ::abs(yavg() - rhs.yavg()) > max_distance)
+		if (::abs(xavg() - rhs.xavg()) > max_distance || ::abs(yavg() - rhs.yavg()) > max_distance)
 			return false;
 
 		int ratio = (rhs.max_range() * 10 / max_range());
-		return ratio > 6 and ratio < 17; // rhs within 60% of our size
+		return ratio > 6 && ratio < 17; // rhs within 60% of our size
 	}
 
 	bool operator<(const Anchor& rhs) const

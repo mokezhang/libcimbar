@@ -112,7 +112,7 @@ unsigned CimbDecoder::get_best_symbol(image_hash::ahash_result<cimbar::Config::c
 		// skip over this drift_idx if it matches cooldown
 		// we could be more clever to check for corners, but for now this is fine
 		// ~0U is "unset"
-		if (drift_idx == cooldown and drift_idx != 4) // don't skip the center, obvs
+		if (drift_idx == cooldown && drift_idx != 4) // don't skip the center, obvs
 			continue;
 		for (unsigned i = 0; i < _tileHashes.size(); ++i)
 		{

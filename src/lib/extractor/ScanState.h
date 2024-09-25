@@ -21,9 +21,9 @@ public:
 	int process(bool active)
 	{
 		bool isTransition = false;
-		bool even = _state == 0 or _state == 2 or _state == 4; // not 6
-		bool odd = _state == 1 or _state == 3 or _state == 5;
-		if ((even and active) or (odd and !active))
+		bool even = _state == 0 || _state == 2 || _state == 4; // not 6
+		bool odd = _state == 1 || _state == 3 || _state == 5;
+		if ((even && active) || (odd && !active))
 			isTransition = true;
 
 		if (isTransition)
@@ -40,9 +40,9 @@ public:
 		}
 
 		// else !isTransition
-		if (odd and active)
+		if (odd && active)
 			_tally.back() += 1;
-		if (!active and (_state == 2 or _state == 4))
+		if (!active && (_state == 2 || _state == 4))
 			_tally.back() += 1;
 		return NOOP;
 	}
@@ -71,7 +71,7 @@ protected:
 				continue;
 			float ratio_min = center / (_tally[i] + 1);
 			float ratio_max = center / std::max(1, _tally[i] - 1);
-			if (ratio_max < _limits[i].first or ratio_min > _limits[i].second)
+			if (ratio_max < _limits[i].first || ratio_min > _limits[i].second)
 				return NOOP;
 		}
 

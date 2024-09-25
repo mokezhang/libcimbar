@@ -40,7 +40,7 @@ int initialize_GL(int width, int height)
 	std::cerr << "initializing " << width << " by " << height << " window";
 
 	_window = std::make_shared<cimbar::window_glfw>(width, height, "Cimbar Encoder");
-	if (!_window or !_window->is_good())
+	if (!_window || !_window->is_good())
 		return 0;
 
 	return 1;
@@ -51,7 +51,7 @@ int initialize_GL(int width, int height)
 // in any case, we're concerned with frame pacing (some encodes take longer than others)
 int render()
 {
-	if (!_window or !_fes or _window->should_close())
+	if (!_window || !_fes || _window->should_close())
 		return -1;
 
 	if (_next)
@@ -65,7 +65,7 @@ int render()
 
 int next_frame()
 {
-	if (!_window or !_fes)
+	if (!_window || !_fes)
 		return 0;
 
 	// we generate 5x the amount of required symbol blocks -- unless everything fits in a single frame.
@@ -122,11 +122,11 @@ int configure(unsigned color_bits, unsigned ecc, int compression, bool legacy_mo
 		color_bits = cimbar::Config::color_bits();
 	if (ecc >= 150)
 		ecc = cimbar::Config::ecc_bytes();
-	if (compression < 0 or compression > 22)
+	if (compression < 0 || compression > 22)
 		compression = cimbar::Config::compression_level();
 
 	// check if we need to refresh the stream
-	bool refresh = (color_bits != _colorBits or ecc != _ecc or compression != _compressionLevel or legacy_mode != _legacyMode);
+	bool refresh = (color_bits != _colorBits || ecc != _ecc || compression != _compressionLevel || legacy_mode != _legacyMode);
 	if (refresh)
 	{
 		// update config
@@ -136,7 +136,7 @@ int configure(unsigned color_bits, unsigned ecc, int compression, bool legacy_mo
 		_legacyMode = legacy_mode;
 
 		// try to refresh the stream
-		if (_window and _fes)
+		if (_window && _fes)
 		{
 			unsigned buff_size_new = cimbar::Config::fountain_chunk_size(_ecc, cimbar::Config::symbol_bits() + _colorBits, _legacyMode);
 			if (!_fes->restart_and_resize_buffer(buff_size_new))

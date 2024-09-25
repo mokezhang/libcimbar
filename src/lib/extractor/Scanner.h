@@ -154,7 +154,7 @@ inline bool Scanner::scan_horizontal(std::vector<Anchor>& points, int y, int xst
 {
 	if (xstart < 0)
 		xstart = 0;
-	if (xend < 0 or xend > _img.cols)
+	if (xend < 0 || xend > _img.cols)
 		xend = _img.cols;
 
 	unsigned initCount = points.size();
@@ -186,7 +186,7 @@ inline bool Scanner::scan_vertical(std::vector<Anchor>& points, int x, int xmax,
 
 	if (ystart < 0)
 		ystart = 0;
-	if (yend < 0 or yend > _img.rows)
+	if (yend < 0 || yend > _img.rows)
 		yend = _img.rows;
 
 	unsigned initCount = points.size();
@@ -233,7 +233,7 @@ inline bool Scanner::scan_diagonal(std::vector<Anchor>& points, int xstart, int 
 	unsigned initCount = points.size();
 	SCANTYPE state;
 	int x = xstart, y = ystart;
-	for (; x < xend and y < yend; ++x, ++y)
+	for (; x < xend && y < yend; ++x, ++y)
 	{
 		bool active = test_pixel(x, y);
 		int res = state.process(active);
@@ -256,7 +256,7 @@ inline void Scanner::t1_scan_rows(std::function<void(const Anchor&)> fun, int sk
 		skip = _skip;
 	if (y < 0)
 		y = skip;
-	if (yend < 0 or yend > _img.rows)
+	if (yend < 0 || yend > _img.rows)
 		yend = _img.rows;
 
 	std::vector<Anchor> points;

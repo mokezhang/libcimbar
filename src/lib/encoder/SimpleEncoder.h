@@ -87,7 +87,7 @@ inline std::optional<cv::Mat> SimpleEncoder::encode_next(STREAM& stream, int can
 
 	reed_solomon_stream rss(stream, _eccBytes, _eccBlockSize);
 	bitreader br;
-	while (rss.good() and progress < 2)  // 1 symbol pass + 1 color pass
+	while (rss.good() && progress < 2)  // 1 symbol pass + 1 color pass
 	{
 		unsigned bytes = rss.readsome();
 		if (bytes == 0)
@@ -164,7 +164,7 @@ inline std::optional<cv::Mat> SimpleEncoder::encode_next_coupled(STREAM& stream,
 template <typename STREAM>
 inline fountain_encoder_stream::ptr SimpleEncoder::create_fountain_encoder(STREAM& stream, int compression_level)
 {
-	unsigned chunk_size = cimbar::Config::fountain_chunk_size(_eccBytes, _bitsPerColor + _bitsPerSymbol, (_colorMode==0 and _coupled));
+	unsigned chunk_size = cimbar::Config::fountain_chunk_size(_eccBytes, _bitsPerColor + _bitsPerSymbol, (_colorMode==0 && _coupled));
 
 	std::stringstream ss;
 	if (compression_level <= 0)

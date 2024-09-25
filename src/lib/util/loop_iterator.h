@@ -24,7 +24,7 @@ public:
 	loop_iterator& operator++()
 	{
 		++_it;
-		if (_it == _c.end() and !_halt)
+		if (_it == _c.end() && !_halt)
 			reset();
 		return *this;
 	}

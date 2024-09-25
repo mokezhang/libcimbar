@@ -66,7 +66,7 @@ public:
 		int channels = _img.channels();
 		if (channels < 3)
 			return std::tuple<uchar,uchar,uchar>(0, 0, 0);
-		if (_img.isContinuous() and _cols > 0)
+		if (_img.isContinuous() && _cols > 0)
 			return mean_rgb_continuous(skip);
 
 		uint16_t blue = 0;
@@ -118,7 +118,7 @@ public:
 	{
 		if (_img.channels() > 1)
 			return 0;
-		if (_img.isContinuous() and _cols > 0)
+		if (_img.isContinuous() && _cols > 0)
 			return mean_grayscale_continuous();
 
 		uint16_t total = 0;

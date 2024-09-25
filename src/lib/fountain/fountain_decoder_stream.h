@@ -59,7 +59,7 @@ public:
 	// 3. special case of #2, where we just roll forward every _bufferSize bytes?
 	std::optional<std::vector<uint8_t>> write(const char* data, unsigned length)
 	{
-		while (length > 0 and good())
+		while (length > 0 && good())
 		{
 			unsigned writeLen = std::min(length, (unsigned)(_buffer.size() - _buffIndex));
 			uint8_t* dst = _buffer.data() + _buffIndex;

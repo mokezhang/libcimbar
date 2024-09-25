@@ -56,7 +56,7 @@ public:
 
 	bool good() const
 	{
-		return _encoder.good() and _data.size() > _encoder.packet_size();
+		return _encoder.good() && _data.size() > _encoder.packet_size();
 	}
 
 	void restart()
@@ -93,7 +93,7 @@ public:
 	fountain_encoder_stream& read(char* data, unsigned length)
 	{
 		std::streamsize totalRead = 0;
-		while (length > 0 and good())
+		while (length > 0 && good())
 		{
 			if (_buffIndex >= _buffer.size())
 				encode_new_block();

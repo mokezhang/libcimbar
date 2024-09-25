@@ -67,7 +67,7 @@ public:
 		int currentBit = index%8;
 
 		int nextWrite = std::min(length, 8-currentBit); // write this many bits
-		while (length > 0 and nextWrite > 0)
+		while (length > 0 && nextWrite > 0)
 		{
 			unsigned char bits = data >> (length - nextWrite);
 			bits = bits << (8 - nextWrite - currentBit);

@@ -70,7 +70,7 @@ int FloodDecodePositions::update_adjacents(const std::array<int,4>& adj, const C
 {
 	for (int next : adj)
 	{
-		if (next < 0 or !_remaining[next])
+		if (next < 0 || !_remaining[next])
 			continue;
 		decode_instructions& di = _instructions[next];
 		if (std::get<1>(di) <= error_distance)
@@ -90,7 +90,7 @@ int FloodDecodePositions::update(unsigned index, const CellDrift& drift, unsigne
 	auto& [_, prev_error, prev_cooldown] = _instructions[index];
 	// in the case where we have consecutive high confidence cells with no drift changes,
 	// it's safe(ish) to aggressively queue a few more cells
-	if (prev_error < 3 and error_distance < 3 and prev_cooldown == 4 and cooldown == 4)
+	if (prev_error < 3 && error_distance < 3 && prev_cooldown == 4 && cooldown == 4)
 	{
 		unsigned rr = 0;
 		unsigned ll = 1;
@@ -99,7 +99,7 @@ int FloodDecodePositions::update(unsigned index, const CellDrift& drift, unsigne
 
 		int rridx = adj[rr];
 		int llidx = adj[ll];
-		if (rridx >= 0 and llidx >= 0)
+		if (rridx >= 0 && llidx >= 0)
 		{
 			std::array<int,4> horizon = {-1, -1, -1, -1};
 			horizon[0] = _cellFinder.right(rridx);
@@ -114,7 +114,7 @@ int FloodDecodePositions::update(unsigned index, const CellDrift& drift, unsigne
 
 		int uuidx = adj[uu];
 		int ddidx = adj[dd];
-		if (uuidx >= 0 and ddidx >= 0)
+		if (uuidx >= 0 && ddidx >= 0)
 		{
 			std::array<int,4> vert = {-1, -1, -1, -1};
 			vert[0] = _cellFinder.top(uuidx);

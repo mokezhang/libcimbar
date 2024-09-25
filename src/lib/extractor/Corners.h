@@ -56,9 +56,9 @@ public:
 	{
 		// if any of our edges are < min_size, return false -- this means we'll be upscaling when we run a deskew.
 		return (
-		        check_scaling(_top_left, _top_right, min_size) and
-		        check_scaling(_top_right, _bottom_right, min_size) and
-		        check_scaling(_bottom_right, _bottom_left, min_size) and
+		        check_scaling(_top_left, _top_right, min_size) &&
+		        check_scaling(_top_right, _bottom_right, min_size) &&
+		        check_scaling(_bottom_right, _bottom_left, min_size) &&
 		        check_scaling(_bottom_left, _top_left, min_size)
 		);
 	}
@@ -66,7 +66,7 @@ public:
 protected:
 	bool check_scaling(const point<int>& a, const point<int>& b, unsigned min_size) const
 	{
-		return abs(a.x() - b.x()) > min_size or abs(a.y() - b.y()) > min_size;
+		return abs(a.x() - b.x()) > min_size || abs(a.y() - b.y()) > min_size;
 	}
 
 protected:

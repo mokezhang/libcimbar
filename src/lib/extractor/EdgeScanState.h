@@ -13,7 +13,7 @@ public:
 
 	int process(bool active)
 	{
-		bool is_transition = (_state == 0 and active) or (_state == 1 and !active);
+		bool is_transition = (_state == 0 && active) || (_state == 1 && !active);
 		if (is_transition)
 		{
 			_state += 1;
@@ -29,10 +29,10 @@ public:
 			return NOOP;
 		}
 
-		if (_state == 1 and active)
+		if (_state == 1 && active)
 			_tally.back() += 1;
 
-		if (_state == 0 and !active)
+		if (_state == 0 && !active)
 			_tally.back() += 1;
 
 		return NOOP;
